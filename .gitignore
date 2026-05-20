@@ -28,4 +28,5 @@
 **/terraform.rc
 
 # Solución de referencia (solo para el docente, no se sube al repositorio de alumnos)
-EA2/ACT_Preparacion_Solucion/
+
+*.pem

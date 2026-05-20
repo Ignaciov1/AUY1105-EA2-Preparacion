@@ -1,0 +1,13 @@
+# ==============================================================================
+# AUY1105 - Infraestructura como Código II
+# Experiencia de Aprendizaje 2 (EA2)
+# Actividad: Preparación Evaluación Parcial 2
+# ------------------------------------------------------------------------------
+# Valores de Variables de Ejemplo de la Solución - terraform.tfvars.example
+# ==============================================================================
+
+aws_region  = "us-east-1"
+environment = "solucion-ep2"
+vpc_cidr    = "10.0.0.0/16"
+subnet_cidr = "10.0.1.0/24"
+instance_type = "t2.micro"
