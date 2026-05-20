@@ -1,0 +1,20 @@
+# ==============================================================================
+# AUY1105 - Infraestructura como Código II
+# Experiencia de Aprendizaje 2 (EA2)
+# Actividad: Preparación Evaluación Parcial 2
+# ------------------------------------------------------------------------------
+# Valores de Variables de Ejemplo - terraform.tfvars.example
+# ==============================================================================
+
+# Región de AWS predeterminada para el laboratorio de AWS Academy Learner Lab
+aws_region = "us-east-1"
+
+# Identificador del entorno
+environment = "practica-ep2"
+
+# Bloque CIDR para la VPC y Subred Pública
+vpc_cidr    = "10.0.0.0/16"
+subnet_cidr = "10.0.1.0/24"
+
+# Tipo de instancia idóneo para la capa gratuita / lab
+instance_type = "t2.micro"
