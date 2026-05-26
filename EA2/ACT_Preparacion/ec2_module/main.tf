@@ -30,5 +30,6 @@ resource "aws_instance" "web" {
   tags = {
     Name        = "Servidor-Web-${var.environment}"
     Environment = var.environment
+    Owner       = "ig.sariego@duocuc.cl"
   }
 }

@@ -15,6 +15,7 @@ resource "aws_vpc" "main" {
   tags = {
     Name        = "VPC-${var.environment}"
     Environment = var.environment
+    Owner       = "ig.sariego@duocuc.cl"
   }
 }
 
@@ -28,6 +29,7 @@ resource "aws_subnet" "public" {
   tags = {
     Name        = "Subnet-Publica-${var.environment}"
     Environment = var.environment
+    Owner       = "ig.sariego@duocuc.cl"
   }
 }
 
@@ -39,6 +41,7 @@ resource "aws_internet_gateway" "gw" {
   tags = {
     Name        = "IGW-${var.environment}"
     Environment = var.environment
+    Owner       = "ig.sariego@duocuc.cl"
   }
 }
 
@@ -55,6 +58,7 @@ resource "aws_route_table" "public" {
   tags = {
     Name        = "RouteTable-Publica-${var.environment}"
     Environment = var.environment
+    Owner       = "ig.sariego@duocuc.cl"
   }
 }
 
@@ -103,5 +107,6 @@ resource "aws_security_group" "web_sg" {
   tags = {
     Name        = "SG-Web-${var.environment}"
     Environment = var.environment
+    Owner       = "ig.sariego@duocuc.cl"
   }
 }
