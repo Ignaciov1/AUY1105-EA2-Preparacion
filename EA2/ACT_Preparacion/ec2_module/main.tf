@@ -20,9 +20,14 @@ resource "aws_instance" "web" {
   user_data = <<-EOF
               #!/bin/bash
               apt-get update -y
-              apt-get install -y apache2
+              DEBIAN_FRONTEND=noninteractive apt-get install -y apache2
               systemctl start apache2
               systemctl enable apache2
+              
+              # Eliminamos la página por defecto para evitar conflictos de sobreescritura
+              rm -f /var/www/html/index.html
+              
+              # Creamos el sitio personalizado
               echo "<h1>Preparación EP2: Despliegue Exitoso en AWS Academy</h1>" > /var/www/html/index.html
               echo "<p>Servidor web configurado dinámicamente mediante Terraform y modularización - DuocUC</p>" >> /var/www/html/index.html
               EOF
