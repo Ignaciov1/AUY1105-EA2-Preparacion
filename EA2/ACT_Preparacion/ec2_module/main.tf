@@ -7,8 +7,6 @@
 # ==============================================================================
 
 # 1. Creación de la Instancia EC2
-# TODO: Configura la instancia EC2 para que use la AMI, el tipo de instancia, la subnet
-# y el grupo de seguridad definidos en las variables correspondientes.
 resource "aws_instance" "web" {
   ami                    = var.ami_id
   instance_type          = var.instance_type
@@ -16,7 +14,7 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = [var.security_group_id]
   key_name               = var.key_name
 
-  # Provisionamiento de un Servidor Web mediante User Data (Versión Ubuntu)
+  # Provisionamiento de un Servidor Web mediante User Data (Versión Ubuntu + UTF-8)
   user_data = <<-EOF
               #!/bin/bash
               apt-get update -y
@@ -24,12 +22,21 @@ resource "aws_instance" "web" {
               systemctl start apache2
               systemctl enable apache2
               
-              # Eliminamos la página por defecto para evitar conflictos de sobreescritura
+              # Eliminamos la página por defecto de Ubuntu
               rm -f /var/www/html/index.html
               
-              # Creamos el sitio personalizado
-              echo "<h1>Preparación EP2: Despliegue Exitoso en AWS Academy</h1>" > /var/www/html/index.html
-              echo "<p>Servidor web configurado dinámicamente mediante Terraform y modularización - DuocUC</p>" >> /var/www/html/index.html
+              # Creamos el sitio personalizado con estructura HTML y codificación UTF-8
+              echo "<!DOCTYPE html>" > /var/www/html/index.html
+              echo "<html lang=\"es\">" >> /var/www/html/index.html
+              echo "<head>" >> /var/www/html/index.html
+              echo "    <meta charset=\"UTF-8\">" >> /var/www/html/index.html
+              echo "    <title>Servidor Web Terraform</title>" >> /var/www/html/index.html
+              echo "</head>" >> /var/www/html/index.html
+              echo "<body>" >> /var/www/html/index.html
+              echo "    <h1>Preparación EP2: Despliegue Exitoso en AWS Academy</h1>" >> /var/www/html/index.html
+              echo "    <p>Servidor web configurado dinámicamente mediante Terraform y modularización - DuocUC</p>" >> /var/www/html/index.html
+              echo "</body>" >> /var/www/html/index.html
+              echo "</html>" >> /var/www/html/index.html
               EOF
 
   tags = {
