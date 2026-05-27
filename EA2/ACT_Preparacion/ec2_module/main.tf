@@ -16,13 +16,13 @@ resource "aws_instance" "web" {
   vpc_security_group_ids = [var.security_group_id]
   key_name               = var.key_name
 
-  # Provisionamiento de un Servidor Web mediante User Data
+  # Provisionamiento de un Servidor Web mediante User Data (Versión Ubuntu)
   user_data = <<-EOF
               #!/bin/bash
-              yum update -y
-              yum install -y httpd
-              systemctl start httpd
-              systemctl enable httpd
+              apt-get update -y
+              apt-get install -y apache2
+              systemctl start apache2
+              systemctl enable apache2
               echo "<h1>Preparación EP2: Despliegue Exitoso en AWS Academy</h1>" > /var/www/html/index.html
               echo "<p>Servidor web configurado dinámicamente mediante Terraform y modularización - DuocUC</p>" >> /var/www/html/index.html
               EOF
